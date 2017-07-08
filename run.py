@@ -25,7 +25,11 @@ def getJoystick():
     for x in range(joystickCount):
 
         with suppress_stdout():
+            sys.stdout = os.devnull
+            sys.stderr = os.devnull
             potentialJoystick = pygame.joystick.Joystick(x);
+            sys.stdout = sys.__stdout__
+            sys.stderr = sys.__stderr__
 
         if potentialJoystick:
             return potentialJoystick;
