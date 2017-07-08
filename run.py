@@ -37,7 +37,9 @@ def readInput(joystick):
         with suppress_stdout():
             sys.stdout = os.devnull;
             sys.stderr = os.devnull;
+            print('a');
             button = joystick.get_button(i);
+            print('b');
             sys.stdout = sys.__stdout__
             sys.stderr = sys.__stderr__
 
