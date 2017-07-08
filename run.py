@@ -2,7 +2,19 @@
 # Controller view by Brian Wilbur
 # https://github.com/oblivion-hymns
 #
+from contextlib import contextmanager;
+import sys, os;
 import pygame;
+
+@contextmanager
+def suppress_stdout():
+    with open(os.devnull, "w") as devnull:
+        old_stdout = sys.stdout
+        sys.stdout = devnull
+        try:
+            yield
+        finally:
+            sys.stdout = old_stdout
 
 def getJoystick():
     """Just get first connected joystick for now"""
@@ -11,9 +23,11 @@ def getJoystick():
     joystickIndex = -1;
     joystickCount = pygame.joystick.get_count();
     for x in range(joystickCount):
-        potentialJoystick = pygame.joystick.Joystick(x);
-        if potentialJoystick:
-            return potentialJoystick;
+
+        with suppress_stdout():
+            potentialJoystick = pygame.joystick.Joystick(x);
+            if potentialJoystick:
+                return potentialJoystick;
 
     return None;
 
