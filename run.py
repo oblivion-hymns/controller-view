@@ -23,13 +23,7 @@ def getJoystick():
     joystickIndex = -1;
     joystickCount = pygame.joystick.get_count();
     for x in range(joystickCount):
-
-        with suppress_stdout():
-            sys.stdout = os.devnull
-            sys.stderr = os.devnull
-            potentialJoystick = pygame.joystick.Joystick(x);
-            sys.stdout = sys.__stdout__
-            sys.stderr = sys.__stderr__
+        potentialJoystick = pygame.joystick.Joystick(x);
 
         if potentialJoystick:
             return potentialJoystick;
@@ -39,16 +33,12 @@ def getJoystick():
 def readInput(joystick):
     numButtons = joystick.get_numbuttons();
 
-    print('0');
     for i in range(numButtons):
-        print('1')
-        button = joystick.get_button(i);
-        print('2');
-        if (button):
-            print('3');
-            print('Button ' + str(i) + ' pushed down');
+        with suppress_stdout():
+            button = joystick.get_button(i);
 
-    print('4');
+        if (button):
+            print('Button ' + str(i) + ' pushed down');
 
     return;
 
