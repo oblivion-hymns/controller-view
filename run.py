@@ -21,7 +21,7 @@ def readInput(joystick):
     numButtons = joystick.get_numbuttons();
 
     for i in range(numButtons):
-        console.log('Button i: ' + str(i));
+        print('Button i: ' + str(i));
 
     return;
 
