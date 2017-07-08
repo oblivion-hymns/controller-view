@@ -33,6 +33,7 @@ def main():
 
     if (joystick):
         print('Controller found. Listening for input...');
+        joystick.init();
         while (runLoop):
             readInput(joystick);
     else:
