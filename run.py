@@ -35,7 +35,11 @@ def readInput(joystick):
 
     for i in range(numButtons):
         with suppress_stdout():
+            sys.stdout = os.devnull;
+            sys.stderr = os.devnull;
             button = joystick.get_button(i);
+            sys.stdout = sys.__stdout__
+            sys.stderr = sys.__stderr__
 
         if (button):
             print('Button ' + str(i) + ' pushed down');
