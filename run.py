@@ -20,10 +20,16 @@ def getJoystick():
 def readInput(joystick):
     numButtons = joystick.get_numbuttons();
 
+    print('0');
     for i in range(numButtons):
+        print('1')
         button = joystick.get_button(i);
+        print('2');
         if (button):
+            print('3');
             print('Button ' + str(i) + ' pushed down');
+
+    print('4');
 
     return;
 
