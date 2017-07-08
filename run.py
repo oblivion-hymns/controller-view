@@ -26,8 +26,9 @@ def getJoystick():
 
         with suppress_stdout():
             potentialJoystick = pygame.joystick.Joystick(x);
-            if potentialJoystick:
-                return potentialJoystick;
+
+        if potentialJoystick:
+            return potentialJoystick;
 
     return None;
 
