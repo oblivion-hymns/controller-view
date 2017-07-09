@@ -234,25 +234,25 @@ def main():
 
                         # Right
                         if hat[0] == 1:
-                            DPad.LEFT.isPressed = False;
-                            DPad.RIGHT.isPressed = True;
+                            DPad.LEFT['isPressed'] = False;
+                            DPad.RIGHT['isPressed'] = True;
                         elif hat[0] == -1:
-                            DPad.LEFT.isPressed = True;
-                            DPad.RIGHT.isPressed = False;
+                            DPad.LEFT['isPressed'] = True;
+                            DPad.RIGHT['isPressed'] = False;
                         else:
-                            DPad.LEFT.isPressed = False;
-                            DPad.RIGHT.isPressed = False;
+                            DPad.LEFT['isPressed'] = False;
+                            DPad.RIGHT['isPressed'] = False;
 
                         # Up
                         if hat[1] == 1:
-                            DPad.UP.isPressed = True;
-                            DPad.DOWN.isPressed = False;
+                            DPad.UP['isPressed'] = True;
+                            DPad.DOWN['isPressed'] = False;
                         elif hat[1] == -1:
-                            DPad.UP.isPressed = False;
-                            DPad.DOWN.isPressed = True;
+                            DPad.UP['isPressed'] = False;
+                            DPad.DOWN['isPressed'] = True;
                         else:
-                            DPad.UP.isPressed = False;
-                            DPad.DOWN.isPressed = False;
+                            DPad.UP['isPressed'] = False;
+                            DPad.DOWN['isPressed'] = False;
 
                 draw(screen, bgImage);
     else:
