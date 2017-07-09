@@ -355,8 +355,9 @@ def main():
                             buttonConst = getattr(Buttons, buttonName);
 
                             if buttonConst:
-                                buttonConst['isPressed'] = False;
-                                print(buttonName + ' released');
+                                if buttonConst['isPressed'] == True:
+                                    buttonConst['isPressed'] = False;
+                                    print(buttonName + ' released');
 
                 if event.type == pygame.JOYHATMOTION:
                     hats = joystick.get_numhats();
