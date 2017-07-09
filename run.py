@@ -57,11 +57,11 @@ def main():
             joystick = potentialJoystick;
             break;
 
-    joystick.init();
     runLoop = True;
 
     if (joystick):
         print('Controller found. Listening for input...');
+        joystick.init();
         runLoop = True;
 
         while runLoop:
