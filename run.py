@@ -105,6 +105,15 @@ class DPad:
         'isPressed': False,
     }
 
+class Trigger:
+    LEFT = {
+        'isPressed': False
+    }
+
+    RIGHT = {
+        'isPressed': False
+    }
+
 def resolveButtonIndex(i):
     """Resolves a button index to a name"""
     if (i == Buttons.A['index']):
@@ -141,6 +150,7 @@ def draw(screen, bgImage):
     transformedImage = pygame.transform.scale(dpadImage, [80, 80]);
     screen.blit(transformedImage, [152, 152]);
 
+    #DPad
     if DPad.UP['isPressed']:
         dpadImage = pygame.image.load("./img/buttons/dpad_up.png");
         transformedImage = pygame.transform.scale(dpadImage, [80, 80]);
@@ -158,6 +168,20 @@ def draw(screen, bgImage):
         transformedImage = pygame.transform.scale(dpadImage, [80, 80]);
         screen.blit(transformedImage, [152, 152]);
 
+    #Triggers
+    if Trigger.LEFT['isPressed']:
+        ltImage = pygame.image.load("./img/buttons/lt.png");
+        transformedImage = pygame.transform.scale(ltImage, [64, 64]);
+        transformedImage = pygame.transform.rotate(transformedImage, 13);
+        screen.blit(transformedImage, [24, 16]);
+
+    if Trigger.RIGHT['isPressed']:
+        rtImage = pygame.image.load("./img/buttons/rt.png");
+        transformedImage = pygame.transform.scale(rtImage, [64, 64]);
+        transformedImage = pygame.transform.rotate(transformedImage, -13);
+        screen.blit(transformedImage, [412, 16]);
+
+    #buttons
     for key in buttonKeys:
         if not key.startswith('__'):
             buttonConst = getattr(Buttons, key);
@@ -253,6 +277,13 @@ def main():
                         else:
                             DPad.UP['isPressed'] = False;
                             DPad.DOWN['isPressed'] = False;
+
+                if event.type == pygame.JOYAXISMOTION:
+                    axes = joystick.get_numaxes();
+                    for i in range(axes):
+                        axis = joystick.get_axis(i);
+                        print(i);
+                        print(axis);
 
                 draw(screen, bgImage);
     else:
