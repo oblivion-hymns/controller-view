@@ -1,6 +1,9 @@
 # controller-view
 Simple Python app that sticks an XBox Controller view on the screen.
 
+## About the Project
+This was a quick one-off done for a friend so he could have a display for his video game streaming -- so, the code is pretty rudimentary.
+
 ## Dependencies
 You need the following things to run this:
 - python 2.7.x (https://www.python.org/downloads/) (Make sure you add Python to your PATH)
@@ -13,9 +16,7 @@ There are no binaries or installers or anything right now, just raw code. So, in
 
 1. Download the .zip file from the upper-right corner of this page.
 2. Extract its contents somewhere easy to remember (e.g. `C:\controllerview`)
-3. Open up a command prompt window. One way to do this is by holding the Windows key and pressing R to open the "Run" dialog, then type `cmd` into the Run dialog and press `Enter`.
-4. In the command prompt window, type `cd C:\controllerview`, where `C:\controllerview` is the path to the folder you extracted that contains `run.py`. Then press `Enter` to navigate to that directory.
-5. Type `python run.py` and hit Enter. It should open and run. You're good to go!
+3. On Windows, simply run `controller-view.bat` by double-clicking it. If it doesn't work, make sure Python is in your system PATH (see Dependencies above)
 
 ## Future Plans
 There are no plans for Playstation support, multiple controllers, profiles, etc.
