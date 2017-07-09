@@ -88,6 +88,23 @@ class Buttons:
         'rotation': 0
     };
 
+class DPad:
+    UP = {
+        'isPressed': False,
+    }
+
+    RIGHT = {
+        'isPressed': False,
+    }
+
+    DOWN = {
+        'isPressed': False,
+    }
+
+    LEFT = {
+        'isPressed': False,
+    }
+
 def resolveButtonIndex(i):
     """Resolves a button index to a name"""
     if (i == Buttons.A['index']):
@@ -118,8 +135,28 @@ def draw(screen, bgImage):
 
     buttonKeys = dir(Buttons);
 
-    #screen.blit(bgImage, [0, 0]);
+    screen.blit(bgImage, [0, 0]);
 
+    dpadImage = pygame.image.load("./img/buttons/dpad.png");
+    transformedImage = pygame.transform.scale(dpadImage, [80, 80]);
+    screen.blit(transformedImage, [152, 152]);
+
+    if DPad.UP['isPressed']:
+        dpadImage = pygame.image.load("./img/buttons/dpad_up.png");
+        transformedImage = pygame.transform.scale(dpadImage, [80, 80]);
+        screen.blit(transformedImage, [152, 152]);
+    elif DPad.DOWN['isPressed']:
+        dpadImage = pygame.image.load("./img/buttons/dpad_down.png");
+        transformedImage = pygame.transform.scale(dpadImage, [80, 80]);
+        screen.blit(transformedImage, [152, 152]);
+    if DPad.LEFT['isPressed']:
+        dpadImage = pygame.image.load("./img/buttons/dpad_left.png");
+        transformedImage = pygame.transform.scale(dpadImage, [80, 80]);
+        screen.blit(transformedImage, [152, 152]);
+    elif DPad.RIGHT['isPressed']:
+        dpadImage = pygame.image.load("./img/buttons/dpad_right.png");
+        transformedImage = pygame.transform.scale(dpadImage, [80, 80]);
+        screen.blit(transformedImage, [152, 152]);
 
     for key in buttonKeys:
         if not key.startswith('__'):
@@ -135,21 +172,6 @@ def draw(screen, bgImage):
                 transformedButton = pygame.transform.rotate(transformedButton, buttonRotation);
 
                 screen.blit(transformedButton, buttonPosition);
-
-    #for key in buttonKeys:
-    #    if not key.startswith('__'):
-    #        buttonConst = getattr(Buttons, key);
-    #        if buttonConst:
-#
-#                buttonPosition = buttonConst['position'];
-#                buttonImage = buttonConst['image'];
-#                buttonScale = buttonConst['size'];
-#                buttonRotation = buttonConst['rotation'];
-#
-#                transformedButton = pygame.transform.scale(buttonImage, buttonScale);
-#                transformedButton = pygame.transform.rotate(transformedButton, buttonRotation);
-#
-#                screen.blit(transformedButton, buttonPosition);
 
     pygame.display.flip();
     return;
@@ -204,6 +226,33 @@ def main():
                             if buttonConst:
                                 buttonConst['isPressed'] = False;
                                 print(buttonName + ' released');
+
+                if event.type == pygame.JOYHATMOTION:
+                    hats = joystick.get_numhats();
+                    for i in range(hats):
+                        hat = joystick.get_hat(i);
+
+                        # Right
+                        if hat[0] == 1:
+                            DPad.LEFT.isPressed = False;
+                            DPad.RIGHT.isPressed = True;
+                        elif hat[0] == -1:
+                            DPad.LEFT.isPressed = True;
+                            DPad.RIGHT.isPressed = False;
+                        else:
+                            DPad.LEFT.isPressed = False;
+                            DPad.RIGHT.isPressed = False;
+
+                        # Up
+                        if hat[1] == 1:
+                            DPad.UP.isPressed = True;
+                            DPad.DOWN.isPressed = False;
+                        elif hat[1] == -1:
+                            DPad.UP.isPressed = False;
+                            DPad.DOWN.isPressed = True;
+                        else:
+                            DPad.UP.isPressed = False;
+                            DPad.DOWN.isPressed = False;
 
                 draw(screen, bgImage);
     else:
