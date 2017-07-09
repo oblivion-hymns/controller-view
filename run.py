@@ -205,7 +205,7 @@ def main():
                                 buttonConst['isPressed'] = False;
                                 print(buttonName + ' released');
 
-                draw(screen. bgImage);
+                draw(screen, bgImage);
     else:
         print('No controllers found. Please ensure your controller is plugged in and turned on.');
 
