@@ -93,7 +93,7 @@ def main():
                             buttonConst = getattr(Buttons, buttonName);
 
                             if buttonConst:
-                                buttonCost['isPressed'] = True;
+                                buttonConst['isPressed'] = True;
                                 print(buttonName + ' pressed');
 
                 if event.type == pygame.JOYBUTTONUP:
