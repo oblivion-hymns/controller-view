@@ -25,7 +25,7 @@ class Buttons:
 
 def resolveButtonIndex(i):
     """Resolves a button index to a name"""
-    if (i == Buttons.A['id']):
+    if (i == Buttons.A['index']):
         return 'A Button';
     elif (i == Buttons.B):
         return 'B Button';
