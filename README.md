@@ -22,5 +22,5 @@ There are no binaries or installers or anything right now, just raw code. So, in
 There are no plans for Playstation support, multiple controllers, profiles, etc.
 
 ## Known bugs
-- The app only picks up the first connected controller it finds.
+- The app only picks up the first connected controller it finds. This is based on the way the system indexes them internally, so it could be based on a number of factors. If you absolutely must have several controllers plugged in, you might have to swap their USB ports around to get them to work.
 - There is no constant controller detection; so if you start the app without a controller plugged in and turned on, it will not detect anything until you restart the app.
