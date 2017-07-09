@@ -11,17 +11,62 @@ class Buttons:
         'index': 0,
         'image': pygame.image.load("./img/buttons/a.png"),
         'isPressed': False,
-        'size': [0, 0, 32, 32]
+        'position': [0, 0]
     };
-    B = 1;
-    X = 2;
-    Y = 3;
-    LEFT_BUMPER = 4;
-    RIGHT_BUMPER = 5;
-    BACK = 6;
-    START = 7;
-    LEFT_STICK = 8;
-    RIGHT_STICK = 9;
+    B = {
+        'index': 1,
+        'image': pygame.image.load("./img/buttons/b.png"),
+        'isPressed': False,
+        'position': [32, 0]
+    };
+    X = {
+        'index': 2,
+        'image': pygame.image.load("./img/buttons/x.png"),
+        'isPressed': False,
+        'position': [64, 0]
+    };
+    Y = {
+        'index': 3,
+        'image': pygame.image.load("./img/buttons/y.png"),
+        'isPressed': False,
+        'position': [96, 0]
+    };
+    LEFT_BUMPER = {
+        'index': 4,
+        'image': pygame.image.load("./img/buttons/lb.png"),
+        'isPressed': False,
+        'position': [128, 0]
+    };
+    RIGHT_BUMPER = {
+        'index': 5,
+        'image': pygame.image.load("./img/buttons/rb.png"),
+        'isPressed': False,
+        'position': [0, 32]
+    };
+    BACK = {
+        'index': 6,
+        'image': pygame.image.load("./img/buttons/back.png"),
+        'isPressed': False,
+        'position': [32, 32]
+    };
+    START = {
+        'index': 7,
+        'image': pygame.image.load("./img/buttons/start.png"),
+        'isPressed': False,
+        'position': [64, 32]
+    };
+    LEFT_STICK = {
+        'index': 8,
+        'image': pygame.image.load("./img/buttons/ls.png"),
+        'isPressed': False,
+        'position': [96, 32]
+    };
+    RIGHT_STICK = {
+        'index': 9,
+        'image': pygame.image.load("./img/buttons/rs.png"),
+        'isPressed': False,
+        'position': [128, 32]
+    };
 
 def resolveButtonIndex(i):
     """Resolves a button index to a name"""
@@ -51,8 +96,24 @@ def resolveButtonIndex(i):
 def draw(screen):
     screen.fill((40, 40, 40));
 
-    if Buttons.A['isPressed']:
-        screen.blit(Buttons.A['image'], Buttons.A['image'].get_rect());
+    buttonKeys = dir(Buttons);
+
+    for key in buttonKeys:
+        if not key.startswith('__'):
+            buttonConst = getattr(Buttons, key);
+            if buttonConst and buttonConst['isPressed'] == True:
+                screen.blit(pygame.transform.scale(buttonConst['image'], (32, 32)), buttonConst['position']);
+
+    #screen.blit(pygame.transform.scale(Buttons.A['image'], (32, 32)), Buttons.A['position']);
+    #screen.blit(pygame.transform.scale(Buttons.B['image'], (32, 32)), Buttons.B['position']);
+    #screen.blit(pygame.transform.scale(Buttons.X['image'], (32, 32)), Buttons.X['position']);
+    #screen.blit(pygame.transform.scale(Buttons.Y['image'], (32, 32)), Buttons.Y['position']);
+    #screen.blit(pygame.transform.scale(Buttons.LEFT_BUMPER['image'], (32, 32)), Buttons.LEFT_BUMPER['position']);
+    #screen.blit(pygame.transform.scale(Buttons.RIGHT_BUMPER['image'], (32, 32)), Buttons.RIGHT_BUMPER['position']);
+    #screen.blit(pygame.transform.scale(Buttons.BACK['image'], (32, 32)), Buttons.BACK['position']);
+    #screen.blit(pygame.transform.scale(Buttons.START['image'], (32, 32)), Buttons.START['position']);
+    #screen.blit(pygame.transform.scale(Buttons.LEFT_STICK['image'], (32, 32)), Buttons.LEFT_STICK['position']);
+    #screen.blit(pygame.transform.scale(Buttons.RIGHT_STICK['image'], (32, 32)), Buttons.RIGHT_STICK['position']);
 
     pygame.display.flip();
     return;
@@ -89,12 +150,6 @@ def main():
                         button = joystick.get_button(i);
                         if button:
                             buttonName = resolveButtonIndex(i);
-                            print(buttonName);
-                            buttonConst = getattr(Buttons, buttonName);
-
-                            if buttonConst:
-                                buttonConst['isPressed'] = True;
-                                print(buttonName + ' pressed');
 
                 if event.type == pygame.JOYBUTTONUP:
                     buttons = joystick.get_numbuttons();
