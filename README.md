@@ -16,7 +16,7 @@ There are no binaries or installers or anything right now, just raw code. So, in
 
 1. Download the .zip file from the upper-right corner of this page.
 2. Extract its contents somewhere easy to remember (e.g. `C:\controllerview`)
-3. On Windows, simply run `controller-view.bat` by double-clicking it. If it doesn't work, make sure Python is in your system PATH (see Dependencies above)
+3. On Windows, simply run `controller-view.pyw` by double-clicking it. If it doesn't work, make sure Python is in your system PATH (see Dependencies above)
 
 ## Future Plans
 There are no plans for Playstation support, multiple controllers, profiles, etc.
