@@ -46,8 +46,6 @@ def readInput(joystick):
         if (button):
             print('Button ' + str(i) + ' pushed down');
 
-    return;
-
 def main():
     pygame.joystick.init();
 
