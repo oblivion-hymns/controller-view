@@ -417,8 +417,8 @@ def main():
                                 RightStick.UP['isPressed'] = False;
                                 RightStick.DOWN['isPressed'] = True;
                             else:
-                                RightStick.LEFT['isPressed'] = False;
-                                RightStick.RIGHT['isPressed'] = False;
+                                RightStick.UP['isPressed'] = False;
+                                RightStick.DOWN['isPressed'] = False;
 
                 draw(screen, bgImage);
     else:
