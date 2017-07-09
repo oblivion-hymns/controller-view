@@ -118,7 +118,7 @@ def draw(screen, bgImage):
 
     buttonKeys = dir(Buttons);
 
-    screen.blit(bgImage, [0, 0]);
+    #screen.blit(bgImage, [0, 0]);
 
 
     for key in buttonKeys:
