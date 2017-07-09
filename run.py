@@ -26,25 +26,25 @@ class Buttons:
 def resolveButtonIndex(i):
     """Resolves a button index to a name"""
     if (i == Buttons.A['index']):
-        return 'A Button';
+        return 'A';
     elif (i == Buttons.B):
-        return 'B Button';
+        return 'B';
     elif (i == Buttons.X):
-        return 'X Button';
+        return 'X';
     elif (i == Buttons.Y):
-        return 'Y Button';
+        return 'Y';
     elif (i == Buttons.LEFT_BUMPER):
-        return 'Left Bumper';
+        return 'LEFT_BUMPER';
     elif (i == Buttons.RIGHT_BUMPER):
-        return 'Right Bumper';
+        return 'RIGHT_BUMPER';
     elif (i == Buttons.BACK):
-        return 'Back Button';
+        return 'BACK';
     elif (i == Buttons.START):
-        return 'Start Button';
+        return 'START';
     elif (i == Buttons.LEFT_STICK):
-        return 'LS Button';
+        return 'LEFT_STICK';
     elif (i == Buttons.RIGHT_STICK):
-        return 'RS Button';
+        return 'RIGHT_STICK';
 
     return 'Unknown Button';
 
@@ -91,7 +91,7 @@ def main():
                             buttonName = resolveButtonIndex(i);
                             for buttonKey in dir(Buttons):
                                 if not buttonKey.startswith('__'):
-                                    buttonConst = getattr(Buttons, buttonKey);
+                                    buttonConst = getattr(Buttons, resolveButtonIndex(buttonKey));
                                     print(buttonConst);
                                     if i == buttonConst['index']:
                                         buttonConst['isPressed'] = True;
@@ -105,7 +105,7 @@ def main():
                             buttonName = resolveButtonIndex(i);
                             for buttonKey in dir(Buttons):
                                 if not buttonKey.startswith('__'):
-                                    buttonConst = getattr(Buttons, buttonKey);
+                                    buttonConst = getattr(Buttons, resolveButtonIndex(buttonKey));
                                     print(buttonConst);
                                     if i == buttonConst['index']:
                                         buttonConst['isPressed'] = True;
