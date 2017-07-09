@@ -6,15 +6,40 @@ from contextlib import contextmanager;
 import sys, os;
 import pygame;
 
-@contextmanager
-def suppress_stdout():
-    with open(os.devnull, "w") as devnull:
-        old_stdout = sys.stdout
-        sys.stdout = devnull
-        try:
-            yield
-        finally:
-            sys.stdout = old_stdout
+class Buttons:
+    A = 0;
+    B = 1;
+    X = 2;
+    Y = 3;
+    LEFT_BUMPER = 4;
+    RIGHT_BUMPER = 5;
+    BACK = 6;
+    START = 7;
+    LEFT_STICK = 8;
+    RIGHT_STICK = 9;
+
+def resolveButtonIndex(i):
+    """Resolves a button index to a name"""
+    if (i == Buttons.A):
+        return 'A Button';
+    elif (i == Buttons.X):
+        return 'X Button';
+    elif (i == Buttons.Y):
+        return 'Y Button';
+    elif (i == Buttons.LEFT_BUMPER):
+        return 'Left Bumper';
+    elif (i == Buttons.RIGHT_BUMPER):
+        return 'Right Bumper';
+    elif (i == Buttons.BACK):
+        return 'Back Button';
+    elif (i == Buttons.START):
+        return 'Start Button';
+    elif (i == Buttons.LEFT_STICK):
+        return 'LS Button';
+    elif (i == Buttons.RIGHT_STICK):
+        return 'RS Button';
+
+    return 'Unknown Button';
 
 def main():
     pygame.init();
@@ -32,7 +57,6 @@ def main():
             joystick = potentialJoystick;
             break;
 
-
     joystick.init();
     runLoop = True;
 
@@ -48,7 +72,8 @@ def main():
                     for i in range(buttons):
                         button = joystick.get_button(i);
                         if button:
-                            print('Button ' + str(i) + ' pressed');
+                            buttonName = resolveButtonIndex(i);
+                            print(buttonName + ' pressed');
 
                 if event.type == pygame.JOYBUTTONUP:
                     print("Joystick button released.")
