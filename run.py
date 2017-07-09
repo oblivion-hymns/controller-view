@@ -7,7 +7,11 @@ import sys, os;
 import pygame;
 
 class Buttons:
-    A = 0;
+    A = {
+        'index': 0,
+        'image': pygame.image.load("./img/buttons/a.png"),
+        'isPressed': False
+    };
     B = 1;
     X = 2;
     Y = 3;
@@ -20,7 +24,7 @@ class Buttons:
 
 def resolveButtonIndex(i):
     """Resolves a button index to a name"""
-    if (i == Buttons.A):
+    if (i == Buttons.A.id):
         return 'A Button';
     elif (i == Buttons.B):
         return 'B Button';
@@ -42,6 +46,13 @@ def resolveButtonIndex(i):
         return 'RS Button';
 
     return 'Unknown Button';
+
+def draw(screen):
+    screen.fill();
+    if Buttons.A.isPressed:
+        screen.blit(Buttons.A.image, Buttons.A.image.get_rect());
+
+    return;
 
 def main():
     pygame.init();
@@ -75,10 +86,22 @@ def main():
                         button = joystick.get_button(i);
                         if button:
                             buttonName = resolveButtonIndex(i);
+                            if i == Buttons.A.index:
+                                Buttons.A.isPressed = True;
+
                             print(buttonName + ' pressed');
 
                 if event.type == pygame.JOYBUTTONUP:
-                    print("Joystick button released.")
+                    buttons = joystick.get_numbuttons();
+                    for i in range(buttons):
+                        button = joystick.get_button(i);
+                        if not button:
+                            buttonName = resolveButtonIndex(i);
+                            if i == Buttons.A.index:
+                                Buttons.A.isPressed = False;
+                            print(buttonName + ' released');
+
+                draw(screen);
     else:
         print('No controllers found. Please ensure your controller is plugged in and turned on.');
 
