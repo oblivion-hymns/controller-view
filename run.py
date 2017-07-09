@@ -105,6 +105,40 @@ class DPad:
         'isPressed': False,
     }
 
+class LeftStick:
+    UP = {
+        'isPressed': False,
+    }
+
+    RIGHT = {
+        'isPressed': False,
+    }
+
+    DOWN = {
+        'isPressed': False,
+    }
+
+    LEFT = {
+        'isPressed': False,
+    }
+
+class RightStick:
+    UP = {
+        'isPressed': False,
+    }
+
+    RIGHT = {
+        'isPressed': False,
+    }
+
+    DOWN = {
+        'isPressed': False,
+    }
+
+    LEFT = {
+        'isPressed': False,
+    }
+
 class Trigger:
     LEFT = {
         'isPressed': False
@@ -282,8 +316,63 @@ def main():
                     axes = joystick.get_numaxes();
                     for i in range(axes):
                         axis = joystick.get_axis(i);
-                        print(i);
-                        print(axis);
+
+                        if i == 0:
+                            #Left stick - x axis
+                            if axis <= -0.10:
+                                LeftStick.LEFT['isPressed'] = True;
+                                LeftStick.RIGHT['isPressed'] = False;
+                            elif axis >= 0.10:
+                                LeftStick.LEFT['isPressed'] = False;
+                                LeftStick.RIGHT['isPressed'] = True;
+                            else:
+                                LeftStick.LEFT['isPressed'] = False;
+                                LeftStick.RIGHT['isPressed'] = False;
+                        elif i == 1:
+                            #Left stick - y axis
+                            if axis <= -0.10:
+                                LeftStick.UP['isPressed'] = True;
+                                LeftStick.DOWN['isPressed'] = False;
+                            elif axis >= 0.10:
+                                LeftStick.UP['isPressed'] = False;
+                                LeftStick.DOWN['isPressed'] = True;
+                            else:
+                                LeftStick.LEFT['isPressed'] = False;
+                                LeftStick.RIGHT['isPressed'] = False;
+                        elif i == 2:
+                            #Triggers
+                            if axis <= -0.10:
+                                #Trigger - left
+                                Trigger.LEFT['isPressed'] = True;
+                                Trigger.RIGHT['isPressed'] = False;
+                            elif axis >= 0.10:
+                                Trigger.LEFT['isPressed'] = False;
+                                Trigger.RIGHT['isPressed'] = True;
+                            else:
+                                Trigger.LEFT['isPressed'] = False;
+                                Trigger.RIGHT['isPressed'] = False;
+                        elif i == 3:
+                            #Right stick - x axis
+                            if axis <= -0.10:
+                                RightStick.LEFT['isPressed'] = True;
+                                RightStick.RIGHT['isPressed'] = False;
+                            elif axis >= 0.10:
+                                RightStick.LEFT['isPressed'] = False;
+                                RightStick.RIGHT['isPressed'] = True;
+                            else:
+                                RightStick.LEFT['isPressed'] = False;
+                                RightStick.RIGHT['isPressed'] = False;
+                        elif i == 4:
+                            #Right stick - y axis
+                            if axis <= -0.10:
+                                RightStick.UP['isPressed'] = True;
+                                RightStick.DOWN['isPressed'] = False;
+                            elif axis >= 0.10:
+                                RightStick.UP['isPressed'] = False;
+                                RightStick.DOWN['isPressed'] = True;
+                            else:
+                                RightStick.LEFT['isPressed'] = False;
+                                RightStick.RIGHT['isPressed'] = False;
 
                 draw(screen, bgImage);
     else:
