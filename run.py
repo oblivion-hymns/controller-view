@@ -48,7 +48,7 @@ def main():
                     for i in range(buttons):
                         button = joystick.get_button(i);
                         if button:
-                            print('Button ' + i + ' pressed');
+                            print('Button ' + str(i) + ' pressed');
 
                 if event.type == pygame.JOYBUTTONUP:
                     print("Joystick button released.")
