@@ -26,9 +26,9 @@ def getJoystick():
         potentialJoystick = pygame.joystick.Joystick(x);
 
         if potentialJoystick:
-            return potentialJoystick;
+            joystick = potentialJoystick;
 
-    return None;
+    return joystick;
 
 def main():
     pygame.init();
@@ -47,7 +47,8 @@ def main():
 
         while runLoop:
             for event in pygame.event.get():
-                print('event found');
+                print(event.type);
+                print(event);
                 if event.type == pygame.JOYBUTTONDOWN:
                     print("Joystick button pressed.")
                 if event.type == pygame.JOYBUTTONUP:
