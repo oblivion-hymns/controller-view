@@ -413,7 +413,7 @@ def main():
                             if axis <= -0.05:
                                 RightStick.LEFT['isPressed'] = True;
                                 RightStick.RIGHT['isPressed'] = False;
-                            elif axis >= 0.10:
+                            elif axis >= 0.05:
                                 RightStick.LEFT['isPressed'] = False;
                                 RightStick.RIGHT['isPressed'] = True;
                             else:
