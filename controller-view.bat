@@ -1,3 +1,3 @@
 echo off
-python ./run.pyw
+pythonw ./run.py
 exit 0
