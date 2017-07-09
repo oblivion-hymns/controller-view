@@ -73,7 +73,7 @@ class Buttons:
     };
     LEFT_STICK = {
         'index': 8,
-        'image': pygame.image.load("./img/buttons/stick.png"),
+        'image': pygame.image.load("./img/buttons/stick_pressed.png"),
         'isPressed': False,
         'position': [88, 80],
         'size': [80, 80],
@@ -81,7 +81,7 @@ class Buttons:
     };
     RIGHT_STICK = {
         'index': 9,
-        'image': pygame.image.load("./img/buttons/stick.png"),
+        'image': pygame.image.load("./img/buttons/stick_pressed.png"),
         'isPressed': False,
         'position': [280, 152],
         'size': [80, 80],
@@ -180,6 +180,32 @@ def draw(screen, bgImage):
 
     screen.blit(bgImage, [0, 0]);
 
+    #Left stick background
+    stickImage = pygame.image.load("./img/buttons/stick.png");
+    transformedImage = pygame.transform.scale(stickImage, Buttons.LEFT_STICK['size']);
+    screen.blit(transformedImage, Buttons.LEFT_STICK['position']);
+
+    #Right stick background
+    stickImage = pygame.image.load("./img/buttons/stick.png");
+    transformedImage = pygame.transform.scale(stickImage, Buttons.RIGHT_STICK['size']);
+    screen.blit(transformedImage, Buttons.RIGHT_STICK['position']);
+
+    #buttons
+    for key in buttonKeys:
+        if not key.startswith('__'):
+            buttonConst = getattr(Buttons, key);
+            if buttonConst and buttonConst['isPressed'] == True:
+
+                buttonPosition = buttonConst['position'];
+                buttonImage = buttonConst['image'];
+                buttonSize = buttonConst['size'];
+                buttonRotation = buttonConst['rotation'];
+
+                transformedButton = pygame.transform.scale(buttonImage, buttonSize);
+                transformedButton = pygame.transform.rotate(transformedButton, buttonRotation);
+
+                screen.blit(transformedButton, buttonPosition);
+
     dpadImage = pygame.image.load("./img/buttons/dpad.png");
     transformedImage = pygame.transform.scale(dpadImage, [80, 80]);
     screen.blit(transformedImage, [152, 152]);
@@ -216,10 +242,6 @@ def draw(screen, bgImage):
         screen.blit(transformedImage, [412, 16]);
 
     # Left stick
-    stickImage = pygame.image.load("./img/buttons/stick.png");
-    transformedImage = pygame.transform.scale(stickImage, Buttons.LEFT_STICK['size']);
-    screen.blit(transformedImage, Buttons.LEFT_STICK['position']);
-
     if LeftStick.UP['isPressed']:
         stickImage = pygame.image.load("./img/buttons/stick_up.png");
         transformedImage = pygame.transform.scale(stickImage, Buttons.LEFT_STICK['size']);
@@ -239,10 +261,6 @@ def draw(screen, bgImage):
         screen.blit(transformedImage, Buttons.LEFT_STICK['position']);
 
     #Right stick
-    stickImage = pygame.image.load("./img/buttons/stick.png");
-    transformedImage = pygame.transform.scale(stickImage, Buttons.RIGHT_STICK['size']);
-    screen.blit(transformedImage, Buttons.RIGHT_STICK['position']);
-
     if RightStick.UP['isPressed']:
         stickImage = pygame.image.load("./img/buttons/stick_up.png");
         transformedImage = pygame.transform.scale(stickImage, Buttons.RIGHT_STICK['size']);
@@ -260,22 +278,6 @@ def draw(screen, bgImage):
         stickImage = pygame.image.load("./img/buttons/stick_right.png");
         transformedImage = pygame.transform.scale(stickImage, Buttons.RIGHT_STICK['size']);
         screen.blit(transformedImage, Buttons.RIGHT_STICK['position']);
-
-    #buttons
-    for key in buttonKeys:
-        if not key.startswith('__'):
-            buttonConst = getattr(Buttons, key);
-            if buttonConst and buttonConst['isPressed'] == True:
-
-                buttonPosition = buttonConst['position'];
-                buttonImage = buttonConst['image'];
-                buttonSize = buttonConst['size'];
-                buttonRotation = buttonConst['rotation'];
-
-                transformedButton = pygame.transform.scale(buttonImage, buttonSize);
-                transformedButton = pygame.transform.rotate(transformedButton, buttonRotation);
-
-                screen.blit(transformedButton, buttonPosition);
 
     pygame.display.flip();
     return;
