@@ -72,23 +72,23 @@ def resolveButtonIndex(i):
     """Resolves a button index to a name"""
     if (i == Buttons.A['index']):
         return 'A';
-    elif (i == Buttons.B):
+    elif (i == Buttons.B['index']):
         return 'B';
-    elif (i == Buttons.X):
+    elif (i == Buttons.X['index']):
         return 'X';
-    elif (i == Buttons.Y):
+    elif (i == Buttons.Y['index']):
         return 'Y';
-    elif (i == Buttons.LEFT_BUMPER):
+    elif (i == Buttons.LEFT_BUMPER['index']):
         return 'LEFT_BUMPER';
-    elif (i == Buttons.RIGHT_BUMPER):
+    elif (i == Buttons.RIGHT_BUMPER['index']):
         return 'RIGHT_BUMPER';
-    elif (i == Buttons.BACK):
+    elif (i == Buttons.BACK['index']):
         return 'BACK';
-    elif (i == Buttons.START):
+    elif (i == Buttons.START['index']):
         return 'START';
-    elif (i == Buttons.LEFT_STICK):
+    elif (i == Buttons.LEFT_STICK['index']):
         return 'LEFT_STICK';
-    elif (i == Buttons.RIGHT_STICK):
+    elif (i == Buttons.RIGHT_STICK['index']):
         return 'RIGHT_STICK';
 
     return 'Unknown Button';
@@ -154,11 +154,9 @@ def main():
                 if event.type == pygame.JOYBUTTONUP:
                     buttons = joystick.get_numbuttons();
                     for i in range(buttons):
-                        print(i);
                         button = joystick.get_button(i);
                         if not button:
                             buttonName = resolveButtonIndex(i);
-                            print(buttonName);
                             buttonConst = getattr(Buttons, buttonName);
 
                             if buttonConst:
