@@ -10,7 +10,8 @@ class Buttons:
     A = {
         'index': 0,
         'image': pygame.image.load("./img/buttons/a.png"),
-        'isPressed': False
+        'isPressed': False,
+        'size': [0, 0, 32, 32]
     };
     B = 1;
     X = 2;
@@ -48,10 +49,12 @@ def resolveButtonIndex(i):
     return 'Unknown Button';
 
 def draw(screen):
-    screen.fill();
-    if Buttons.A.isPressed:
-        screen.blit(Buttons.A.image, Buttons.A.image.get_rect());
+    screen.fill((40, 40, 40));
 
+    if Buttons.A['isPressed']:
+        screen.blit(Buttons.A['image'], Buttons.A['image'].get_rect());
+
+    pygame.display.flip();
     return;
 
 def main():
@@ -104,10 +107,5 @@ def main():
                 draw(screen);
     else:
         print('No controllers found. Please ensure your controller is plugged in and turned on.');
-
-    for event in pygame.event.get():
-        print(pygame.JOYBUTTONUP);
-        if event == pygame.JOYBUTTONUP:
-            button = joystick.get_button();
 
 main();
