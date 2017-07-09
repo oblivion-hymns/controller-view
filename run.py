@@ -22,6 +22,8 @@ def resolveButtonIndex(i):
     """Resolves a button index to a name"""
     if (i == Buttons.A):
         return 'A Button';
+    elif (i == Buttons.B):
+        return 'B Button';
     elif (i == Buttons.X):
         return 'X Button';
     elif (i == Buttons.Y):
