@@ -39,9 +39,7 @@ def readInput(joystick):
         print('2');
 
         sys.stdout = os.devnull;
-        print('inner A');
         button = joystick.get_button(i);
-        print('inner B');
         sys.stdout = sys.__stdout__;
         print('3');
 
