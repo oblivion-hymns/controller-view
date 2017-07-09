@@ -42,10 +42,14 @@ def main():
 
         while runLoop:
             for event in pygame.event.get():
-                print(event.type);
-                print(event);
+
                 if event.type == pygame.JOYBUTTONDOWN:
-                    print("Joystick button pressed.")
+                    buttons = joystick.get_numbuttons();
+                    for i in range(buttons):
+                        button = joystick.get_button(i);
+                        if button:
+                            print('Button ' + i + ' pressed');
+
                 if event.type == pygame.JOYBUTTONUP:
                     print("Joystick button released.")
     else:
