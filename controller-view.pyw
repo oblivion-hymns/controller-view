@@ -308,12 +308,14 @@ def draw(screen, bgImage):
     return;
 
 def main():
+    # Initialize
     pygame.init();
     pygame.joystick.init();
     screenSize = [512, 342];
     screen = pygame.display.set_mode(screenSize);
     pygame.display.set_caption('Controller View');
 
+    # Detect joystick
     joystick = None;
     joystickCount = pygame.joystick.get_count();
     for x in range(joystickCount):
@@ -327,15 +329,19 @@ def main():
     bgImage = pygame.image.load("./img/controller.png");
 
     if (joystick):
+        # Begin app
         joystick.init();
         runLoop = True;
 
         while runLoop:
             for event in pygame.event.get():
+
+                # Exit window via X icon
                 if event.type == pygame.QUIT:
                     runLoop = False;
                     break;
 
+                # Button pressed
                 if event.type == pygame.JOYBUTTONDOWN:
                     buttons = joystick.get_numbuttons();
                     for i in range(buttons):
@@ -347,6 +353,7 @@ def main():
                             if buttonConst:
                                 buttonConst['isPressed'] = True;
 
+                # Button released
                 if event.type == pygame.JOYBUTTONUP:
                     buttons = joystick.get_numbuttons();
                     for i in range(buttons):
@@ -359,12 +366,13 @@ def main():
                                 if buttonConst['isPressed'] == True:
                                     buttonConst['isPressed'] = False;
 
+                # D-Pad
                 if event.type == pygame.JOYHATMOTION:
                     hats = joystick.get_numhats();
                     for i in range(hats):
                         hat = joystick.get_hat(i);
 
-                        # Right
+                        # Left/right
                         if hat[0] == 1:
                             DPad.LEFT['isPressed'] = False;
                             DPad.RIGHT['isPressed'] = True;
@@ -375,7 +383,7 @@ def main():
                             DPad.LEFT['isPressed'] = False;
                             DPad.RIGHT['isPressed'] = False;
 
-                        # Up
+                        # Up/down
                         if hat[1] == 1:
                             DPad.UP['isPressed'] = True;
                             DPad.DOWN['isPressed'] = False;
@@ -386,13 +394,14 @@ def main():
                             DPad.UP['isPressed'] = False;
                             DPad.DOWN['isPressed'] = False;
 
+                # Axes (left stick, right stick, triggers)
                 if event.type == pygame.JOYAXISMOTION:
                     axes = joystick.get_numaxes();
                     for i in range(axes):
                         axis = joystick.get_axis(i);
 
                         if i == 0:
-                            #Left stick - x axis
+                            # Left stick - x axis
                             if axis <= -0.075:
                                 LeftStick.LEFT['isPressed'] = True;
                                 LeftStick.RIGHT['isPressed'] = False;
@@ -403,7 +412,7 @@ def main():
                                 LeftStick.LEFT['isPressed'] = False;
                                 LeftStick.RIGHT['isPressed'] = False;
                         elif i == 1:
-                            #Left stick - y axis
+                            # Left stick - y axis
                             if axis <= -0.075:
                                 LeftStick.UP['isPressed'] = True;
                                 LeftStick.DOWN['isPressed'] = False;
@@ -414,9 +423,8 @@ def main():
                                 LeftStick.UP['isPressed'] = False;
                                 LeftStick.DOWN['isPressed'] = False;
                         elif i == 2:
-                            #Triggers
+                            # Triggers - Both triggers count as one axis
                             if axis <= -0.05:
-                                #Trigger - left
                                 Trigger.LEFT['isPressed'] = True;
                                 Trigger.RIGHT['isPressed'] = False;
                             elif axis >= 0.05:
@@ -426,7 +434,7 @@ def main():
                                 Trigger.LEFT['isPressed'] = False;
                                 Trigger.RIGHT['isPressed'] = False;
                         elif i == 3:
-                            #Right stick - x axis
+                            # Right stick - y axis
                             if axis <= -0.075:
                                 RightStick.UP['isPressed'] = True;
                                 RightStick.DOWN['isPressed'] = False;
@@ -437,7 +445,7 @@ def main():
                                 RightStick.UP['isPressed'] = False;
                                 RightStick.DOWN['isPressed'] = False;
                         elif i == 4:
-                            #Right stick - y axis
+                            # Right stick - x axis
                             if axis <= -0.075:
                                 RightStick.LEFT['isPressed'] = True;
                                 RightStick.RIGHT['isPressed'] = False;
