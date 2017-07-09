@@ -103,8 +103,8 @@ def main():
                             buttonName = resolveButtonIndex(i);
                             for buttonKey in dir(Buttons):
                                 if not buttonKey.startswith('__'):
-                                    if i == Buttons.buttonKey['index']:
-                                        Buttons.buttonKey['isPressed'] = False;
+                                    if i == getattr(Buttons, buttonKey)['index']:
+                                        getattr(Buttons, buttonKey)['isPressed'] = False;
                                         print(resolveButtonIndex(i) + ' released');
 
                 draw(screen);
