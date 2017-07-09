@@ -90,7 +90,7 @@ def main():
                         if button:
                             buttonName = resolveButtonIndex(i);
                             if i == Buttons.A['index']:
-                                Buttons.A.isPressed = True;
+                                Buttons.A['isPressed'] = True;
 
                             print(buttonName + ' pressed');
 
@@ -100,12 +100,15 @@ def main():
                         button = joystick.get_button(i);
                         if not button:
                             buttonName = resolveButtonIndex(i);
-                            if i == Buttons.A.index:
-                                Buttons.A.isPressed = False;
+                            if i == Buttons.A['index']:
+                                Buttons.A['isPressed'] = False;
                             print(buttonName + ' released');
 
                 draw(screen);
     else:
         print('No controllers found. Please ensure your controller is plugged in and turned on.');
+
+        while True:
+            draw(screen);
 
 main();
