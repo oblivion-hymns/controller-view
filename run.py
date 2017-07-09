@@ -150,6 +150,11 @@ def main():
                         button = joystick.get_button(i);
                         if button:
                             buttonName = resolveButtonIndex(i);
+                            buttonConst = getattr(Buttons, buttonName);
+
+                            if buttonConst:
+                                buttonConst['isPressed'] = True;
+                                print(buttonName + ' pressed');
 
                 if event.type == pygame.JOYBUTTONUP:
                     buttons = joystick.get_numbuttons();
