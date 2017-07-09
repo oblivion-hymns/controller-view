@@ -333,6 +333,9 @@ def main():
 
         while runLoop:
             for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    runLoop = False;
+                    break;
 
                 if event.type == pygame.JOYBUTTONDOWN:
                     buttons = joystick.get_numbuttons();
@@ -451,8 +454,5 @@ def main():
                 draw(screen, bgImage);
     else:
         print('No controllers found. Please ensure your controller is plugged in and turned on.');
-
-        while True:
-            draw(screen, bgImage);
 
 main();
