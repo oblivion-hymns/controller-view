@@ -40,11 +40,11 @@ def readInput(joystick):
 
         #sys.stdout = os.devnull;
         #sys.stderr = os.devnull;
-        print('a');
+        print('inner A');
         button = joystick.get_button(i);
-        print('b');
-        sys.stdout = sys.__stdout__
-        sys.stderr = sys.__stderr__
+        print('inner B');
+        sys.stdout = sys.__stdout__;
+        sys.stderr = sys.__stderr__;
         print('3');
 
         print('4');
@@ -63,9 +63,9 @@ def main():
         print('Controller found. Listening for input...');
         joystick.init();
         while (runLoop):
-            print('a');
+            print('outer A');
             readInput(joystick);
-            print('b');
+            print('outer B');
     else:
         print('No controllers found. Please ensure your controller is plugged in and turned on.');
 
