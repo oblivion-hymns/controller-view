@@ -92,6 +92,7 @@ def main():
                             for buttonKey in dir(Buttons):
                                 if not buttonKey.startswith('__'):
                                     buttonConst = getattr(Buttons, buttonKey);
+                                    print(buttonConst);
                                     if i == buttonConst['index']:
                                         buttonConst['isPressed'] = True;
                                         print(resolveButtonIndex(i) + ' pressed');
@@ -105,6 +106,7 @@ def main():
                             for buttonKey in dir(Buttons):
                                 if not buttonKey.startswith('__'):
                                     buttonConst = getattr(Buttons, buttonKey);
+                                    print(buttonConst);
                                     if i == buttonConst['index']:
                                         buttonConst['isPressed'] = True;
                                         print(resolveButtonIndex(i) + ' released');
