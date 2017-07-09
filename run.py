@@ -91,8 +91,8 @@ def main():
                             buttonName = resolveButtonIndex(i);
                             for buttonKey in dir(Buttons):
                                 if not buttonKey.startswith('__'):
-                                    if i == Buttons.buttonKey['index']:
-                                        Buttons.buttonKey['isPressed'] = True;
+                                    if i == getattr(Buttons, buttonKey)['index']:
+                                        getattr(Buttons, buttonKey)['isPressed'] = True;
                                         print(resolveButtonIndex(i) + ' pressed');
 
                 if event.type == pygame.JOYBUTTONUP:
