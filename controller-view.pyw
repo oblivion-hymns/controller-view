@@ -327,7 +327,6 @@ def main():
     bgImage = pygame.image.load("./img/controller.png");
 
     if (joystick):
-        print('Controller found. Listening for input...');
         joystick.init();
         runLoop = True;
 
@@ -347,7 +346,6 @@ def main():
 
                             if buttonConst:
                                 buttonConst['isPressed'] = True;
-                                print(buttonName + ' pressed');
 
                 if event.type == pygame.JOYBUTTONUP:
                     buttons = joystick.get_numbuttons();
@@ -360,7 +358,6 @@ def main():
                             if buttonConst:
                                 if buttonConst['isPressed'] == True:
                                     buttonConst['isPressed'] = False;
-                                    print(buttonName + ' released');
 
                 if event.type == pygame.JOYHATMOTION:
                     hats = joystick.get_numhats();
