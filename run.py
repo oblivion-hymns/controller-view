@@ -38,8 +38,8 @@ def readInput(joystick):
     for i in range(numButtons):
         print('2');
 
-        #sys.stdout = os.devnull;
-        #sys.stderr = os.devnull;
+        sys.stdout = os.devnull;
+        sys.stderr = os.devnull;
         print('inner A');
         button = joystick.get_button(i);
         print('inner B');
