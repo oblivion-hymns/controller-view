@@ -30,21 +30,6 @@ def getJoystick():
 
     return None;
 
-
-def run():
-    runLoop = True;
-    while runLoop:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                runLoop = False;
-
-            if event.type == pygame.JOYBUTTONDOWN:
-                print("Joystick button pressed.")
-            if event.type == pygame.JOYBUTTONUP:
-                print("Joystick button released.")
-
-    return;
-
 def main():
     pygame.init();
     screenSize = [200, 200];
@@ -58,7 +43,15 @@ def main():
 
     if (joystick):
         print('Controller found. Listening for input...');
-        run();
+        runLoop = True;
+
+        while runLoop:
+            for event in pygame.event.get():
+                console.log('event found');
+                if event.type == pygame.JOYBUTTONDOWN:
+                    print("Joystick button pressed.")
+                if event.type == pygame.JOYBUTTONUP:
+                    print("Joystick button released.")
     else:
         print('No controllers found. Please ensure your controller is plugged in and turned on.');
 
