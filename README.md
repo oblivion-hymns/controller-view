@@ -1,8 +1,8 @@
 # controller-view
-Simple Python app that sticks an XBox Controller view on the screen.
+Simple Python app that sticks an XBox Controller view on the screen. Useful for displaying on video game broadcasts.
 
-## About the Project
-This was a quick one-off done for a friend so he could have a display for his video game streaming -- so, the code is pretty rudimentary.
+## About
+This was a quick one-off done for a friend so he could have a display for his video game streaming -- so, the code is pretty rudimentary and may be bug-prone -- plenty of magic numbers to be found.
 
 ## Dependencies
 You need the following things to run this:
@@ -13,7 +13,6 @@ You can test your Python installation on Windows by opening a new Command Line w
 
 ## To Use
 There are no binaries or installers or anything right now, just raw code. So, in Windows:
-
 1. Download the .zip file from the upper-right corner of this page.
 2. Extract its contents somewhere easy to remember (e.g. `C:\controllerview`)
 3. On Windows, simply run `controller-view.pyw` by double-clicking it. If it doesn't work, make sure Python is in your system PATH (see Dependencies above)
