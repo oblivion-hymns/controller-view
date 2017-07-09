@@ -16,29 +16,23 @@ def suppress_stdout():
         finally:
             sys.stdout = old_stdout
 
-def getJoystick():
-    """Just get first connected joystick for now"""
-
-    joystick = None;
-    joystickIndex = -1;
-    joystickCount = pygame.joystick.get_count();
-    for x in range(joystickCount):
-        potentialJoystick = pygame.joystick.Joystick(x);
-
-        if potentialJoystick:
-            joystick = potentialJoystick;
-
-    return joystick;
-
 def main():
     pygame.init();
     screenSize = [200, 200];
     screen = pygame.display.set_mode(screenSize);
     pygame.display.set_caption('Controller View');
 
+    joystick = None;
+    joystickCount = pygame.joystick.get_count();
+    for x in range(joystickCount):
+        potentialJoystick = pygame.joystick.Joystick(x);
+
+        if potentialJoystick:
+            joystick = potentialJoystick;
+            break;
+
     pygame.joystick.init();
 
-    joystick = getJoystick();
     runLoop = True;
 
     if (joystick):
