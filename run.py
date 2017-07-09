@@ -18,6 +18,7 @@ def suppress_stdout():
 
 def main():
     pygame.init();
+    pygame.joystick.init();
     screenSize = [200, 200];
     screen = pygame.display.set_mode(screenSize);
     pygame.display.set_caption('Controller View');
@@ -31,8 +32,8 @@ def main():
             joystick = potentialJoystick;
             break;
 
-    pygame.joystick.init();
 
+    joystick.init();
     runLoop = True;
 
     if (joystick):
