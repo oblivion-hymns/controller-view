@@ -365,10 +365,10 @@ def main():
 
                         if i == 0:
                             #Left stick - x axis
-                            if axis <= -0.10:
+                            if axis <= -0.05:
                                 LeftStick.LEFT['isPressed'] = True;
                                 LeftStick.RIGHT['isPressed'] = False;
-                            elif axis >= 0.10:
+                            elif axis >= 0.05:
                                 LeftStick.LEFT['isPressed'] = False;
                                 LeftStick.RIGHT['isPressed'] = True;
                             else:
@@ -376,10 +376,10 @@ def main():
                                 LeftStick.RIGHT['isPressed'] = False;
                         elif i == 1:
                             #Left stick - y axis
-                            if axis <= -0.10:
+                            if axis <= -0.05:
                                 LeftStick.UP['isPressed'] = True;
                                 LeftStick.DOWN['isPressed'] = False;
-                            elif axis >= 0.10:
+                            elif axis >= 0.05:
                                 LeftStick.UP['isPressed'] = False;
                                 LeftStick.DOWN['isPressed'] = True;
                             else:
@@ -387,11 +387,11 @@ def main():
                                 LeftStick.DOWN['isPressed'] = False;
                         elif i == 2:
                             #Triggers
-                            if axis <= -0.10:
+                            if axis <= -0.05:
                                 #Trigger - left
                                 Trigger.LEFT['isPressed'] = True;
                                 Trigger.RIGHT['isPressed'] = False;
-                            elif axis >= 0.10:
+                            elif axis >= 0.05:
                                 Trigger.LEFT['isPressed'] = False;
                                 Trigger.RIGHT['isPressed'] = True;
                             else:
@@ -399,7 +399,7 @@ def main():
                                 Trigger.RIGHT['isPressed'] = False;
                         elif i == 3:
                             #Right stick - x axis
-                            if axis <= -0.10:
+                            if axis <= -0.05:
                                 RightStick.LEFT['isPressed'] = True;
                                 RightStick.RIGHT['isPressed'] = False;
                             elif axis >= 0.10:
@@ -410,10 +410,10 @@ def main():
                                 RightStick.RIGHT['isPressed'] = False;
                         elif i == 4:
                             #Right stick - y axis
-                            if axis <= -0.10:
+                            if axis <= -0.05:
                                 RightStick.UP['isPressed'] = True;
                                 RightStick.DOWN['isPressed'] = False;
-                            elif axis >= 0.10:
+                            elif axis >= 0.05:
                                 RightStick.UP['isPressed'] = False;
                                 RightStick.DOWN['isPressed'] = True;
                             else:
