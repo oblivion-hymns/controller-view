@@ -425,11 +425,11 @@ def main():
                         elif i == 2:
                             # Triggers - Both triggers count as one axis
                             if axis <= -0.05:
-                                Trigger.LEFT['isPressed'] = True;
-                                Trigger.RIGHT['isPressed'] = False;
-                            elif axis >= 0.05:
                                 Trigger.LEFT['isPressed'] = False;
                                 Trigger.RIGHT['isPressed'] = True;
+                            elif axis >= 0.05:
+                                Trigger.LEFT['isPressed'] = True;
+                                Trigger.RIGHT['isPressed'] = False;
                             else:
                                 Trigger.LEFT['isPressed'] = False;
                                 Trigger.RIGHT['isPressed'] = False;
