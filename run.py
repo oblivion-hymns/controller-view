@@ -243,24 +243,23 @@ def draw(screen, bgImage):
     transformedImage = pygame.transform.scale(stickImage, Buttons.RIGHT_STICK['size']);
     screen.blit(transformedImage, Buttons.RIGHT_STICK['position']);
 
-    if LeftStick.UP['isPressed']:
+    if RightStick.UP['isPressed']:
         stickImage = pygame.image.load("./img/buttons/stick_up.png");
         transformedImage = pygame.transform.scale(stickImage, Buttons.RIGHT_STICK['size']);
         screen.blit(transformedImage, Buttons.RIGHT_STICK['position']);
-    elif LeftStick.DOWN['isPressed']:
+    elif RightStick.DOWN['isPressed']:
         stickImage = pygame.image.load("./img/buttons/stick_down.png");
         transformedImage = pygame.transform.scale(stickImage, Buttons.RIGHT_STICK['size']);
         screen.blit(transformedImage, Buttons.RIGHT_STICK['position']);
 
-    if LeftStick.LEFT['isPressed']:
+    if RightStick.LEFT['isPressed']:
         stickImage = pygame.image.load("./img/buttons/stick_left.png");
         transformedImage = pygame.transform.scale(stickImage, Buttons.RIGHT_STICK['size']);
         screen.blit(transformedImage, Buttons.RIGHT_STICK['position']);
-    elif LeftStick.RIGHT['isPressed']:
+    elif RightStick.RIGHT['isPressed']:
         stickImage = pygame.image.load("./img/buttons/stick_right.png");
         transformedImage = pygame.transform.scale(stickImage, Buttons.RIGHT_STICK['size']);
         screen.blit(transformedImage, Buttons.RIGHT_STICK['position']);
-
 
     #buttons
     for key in buttonKeys:
