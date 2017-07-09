@@ -174,7 +174,7 @@ def resolveButtonIndex(i):
     return 'Unknown Button';
 
 def draw(screen, bgImage):
-    screen.fill((40, 40, 40));
+    screen.fill((255, 0, 255));
 
     buttonKeys = dir(Buttons);
 
