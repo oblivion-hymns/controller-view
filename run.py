@@ -154,6 +154,7 @@ def main():
                 if event.type == pygame.JOYBUTTONUP:
                     buttons = joystick.get_numbuttons();
                     for i in range(buttons):
+                        print(i);
                         button = joystick.get_button(i);
                         if not button:
                             buttonName = resolveButtonIndex(i);
