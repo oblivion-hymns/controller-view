@@ -102,13 +102,12 @@ def main():
                         button = joystick.get_button(i);
                         if not button:
                             buttonName = resolveButtonIndex(i);
-                            for buttonKey in dir(Buttons):
-                                if not buttonKey.startswith('__'):
-                                    buttonConst = getattr(Buttons, buttonKey);
-                                    print(buttonConst);
-                                    if i == buttonConst['index']:
-                                        buttonConst['isPressed'] = True;
-                                        print(resolveButtonIndex(i) + ' released');
+                            print(buttonName);
+                            buttonConst = getattr(Buttons, buttonName);
+
+                            if buttonConst:
+                                buttonConst['isPressed'] = False;
+                                print(buttonName + ' released');
 
                 draw(screen);
     else:
