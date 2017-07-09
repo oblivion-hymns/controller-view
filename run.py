@@ -400,17 +400,6 @@ def main():
                         elif i == 3:
                             #Right stick - x axis
                             if axis <= -0.05:
-                                RightStick.LEFT['isPressed'] = True;
-                                RightStick.RIGHT['isPressed'] = False;
-                            elif axis >= 0.10:
-                                RightStick.LEFT['isPressed'] = False;
-                                RightStick.RIGHT['isPressed'] = True;
-                            else:
-                                RightStick.LEFT['isPressed'] = False;
-                                RightStick.RIGHT['isPressed'] = False;
-                        elif i == 4:
-                            #Right stick - y axis
-                            if axis <= -0.05:
                                 RightStick.UP['isPressed'] = True;
                                 RightStick.DOWN['isPressed'] = False;
                             elif axis >= 0.05:
@@ -419,6 +408,17 @@ def main():
                             else:
                                 RightStick.UP['isPressed'] = False;
                                 RightStick.DOWN['isPressed'] = False;
+                        elif i == 4:
+                            #Right stick - y axis
+                            if axis <= -0.05:
+                                RightStick.LEFT['isPressed'] = True;
+                                RightStick.RIGHT['isPressed'] = False;
+                            elif axis >= 0.10:
+                                RightStick.LEFT['isPressed'] = False;
+                                RightStick.RIGHT['isPressed'] = True;
+                            else:
+                                RightStick.LEFT['isPressed'] = False;
+                                RightStick.RIGHT['isPressed'] = False;
 
                 draw(screen, bgImage);
     else:
