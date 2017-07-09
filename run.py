@@ -383,8 +383,8 @@ def main():
                                 LeftStick.UP['isPressed'] = False;
                                 LeftStick.DOWN['isPressed'] = True;
                             else:
-                                LeftStick.LEFT['isPressed'] = False;
-                                LeftStick.RIGHT['isPressed'] = False;
+                                LeftStick.UP['isPressed'] = False;
+                                LeftStick.DOWN['isPressed'] = False;
                         elif i == 2:
                             #Triggers
                             if axis <= -0.10:
