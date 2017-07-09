@@ -31,9 +31,12 @@ def getJoystick():
     return None;
 
 def readInput(joystick):
+    print('0');
     numButtons = joystick.get_numbuttons();
+    print('1');
 
     for i in range(numButtons):
+        print('2');
         with suppress_stdout():
             sys.stdout = os.devnull;
             sys.stderr = os.devnull;
@@ -42,9 +45,13 @@ def readInput(joystick):
             print('b');
             sys.stdout = sys.__stdout__
             sys.stderr = sys.__stderr__
+            print('3');
 
+        print('4');
         if (button):
             print('Button ' + str(i) + ' pushed down');
+
+        print('5');
 
 def main():
     pygame.joystick.init();
@@ -56,7 +63,9 @@ def main():
         print('Controller found. Listening for input...');
         joystick.init();
         while (runLoop):
+            print('a');
             readInput(joystick);
+            print('b');
     else:
         print('No controllers found. Please ensure your controller is plugged in and turned on.');
 
