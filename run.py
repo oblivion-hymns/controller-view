@@ -194,17 +194,21 @@ def draw(screen, bgImage):
     for key in buttonKeys:
         if not key.startswith('__'):
             buttonConst = getattr(Buttons, key);
-            if buttonConst and buttonConst['isPressed'] == True:
+            if buttonConst:
+                #if buttonConst['isPressed'] == True:
+                #    buttonImage = buttonConst['imagePressed'];
+                #else:
+                if buttonConst['isPressed'] == True:
+                    buttonImage = buttonConst['image'];
 
-                buttonPosition = buttonConst['position'];
-                buttonImage = buttonConst['image'];
-                buttonSize = buttonConst['size'];
-                buttonRotation = buttonConst['rotation'];
+                    buttonPosition = buttonConst['position'];
+                    buttonSize = buttonConst['size'];
+                    buttonRotation = buttonConst['rotation'];
 
-                transformedButton = pygame.transform.scale(buttonImage, buttonSize);
-                transformedButton = pygame.transform.rotate(transformedButton, buttonRotation);
+                    transformedButton = pygame.transform.scale(buttonImage, buttonSize);
+                    transformedButton = pygame.transform.rotate(transformedButton, buttonRotation);
 
-                screen.blit(transformedButton, buttonPosition);
+                    screen.blit(transformedButton, buttonPosition);
 
     dpadImage = pygame.image.load("./img/buttons/dpad.png");
     transformedImage = pygame.transform.scale(dpadImage, [80, 80]);
@@ -229,17 +233,30 @@ def draw(screen, bgImage):
         screen.blit(transformedImage, [152, 152]);
 
     #Triggers
+    triggerSize = [80, 80];
+    leftTriggerPos = [8, 14];
     if Trigger.LEFT['isPressed']:
-        ltImage = pygame.image.load("./img/buttons/lt.png");
-        transformedImage = pygame.transform.scale(ltImage, [64, 64]);
+        ltImage = pygame.image.load("./img/buttons/lt_pressed.png");
+        transformedImage = pygame.transform.scale(ltImage, triggerSize);
         transformedImage = pygame.transform.rotate(transformedImage, 13);
-        screen.blit(transformedImage, [24, 16]);
+        screen.blit(transformedImage, leftTriggerPos);
+    else:
+        ltImage = pygame.image.load("./img/buttons/lt.png");
+        transformedImage = pygame.transform.scale(ltImage, triggerSize);
+        transformedImage = pygame.transform.rotate(transformedImage, 13);
+        screen.blit(transformedImage, leftTriggerPos);
 
+    rightTriggerPos = [407, 14];
     if Trigger.RIGHT['isPressed']:
-        rtImage = pygame.image.load("./img/buttons/rt.png");
-        transformedImage = pygame.transform.scale(rtImage, [64, 64]);
+        rtImage = pygame.image.load("./img/buttons/rt_pressed.png");
+        transformedImage = pygame.transform.scale(rtImage, triggerSize);
         transformedImage = pygame.transform.rotate(transformedImage, -13);
-        screen.blit(transformedImage, [412, 16]);
+        screen.blit(transformedImage, rightTriggerPos);
+    else:
+        rtImage = pygame.image.load("./img/buttons/rt.png");
+        transformedImage = pygame.transform.scale(rtImage, triggerSize);
+        transformedImage = pygame.transform.rotate(transformedImage, -13);
+        screen.blit(transformedImage, rightTriggerPos);
 
     # Left stick
     if LeftStick.UP['isPressed']:
