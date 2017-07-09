@@ -90,7 +90,7 @@ def main():
                         if button:
                             buttonName = resolveButtonIndex(i);
                             print(buttonName);
-                            buttonConst = getattr(Buttons, Name);
+                            buttonConst = getattr(Buttons, buttonName);
 
                             if buttonConst:
                                 buttonCost['isPressed'] = True;
