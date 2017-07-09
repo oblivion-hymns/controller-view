@@ -25,7 +25,7 @@ class Buttons:
 
 def resolveButtonIndex(i):
     """Resolves a button index to a name"""
-    if (i == Buttons.A.id):
+    if (i == Buttons.A['id']):
         return 'A Button';
     elif (i == Buttons.B):
         return 'B Button';
@@ -89,7 +89,7 @@ def main():
                         button = joystick.get_button(i);
                         if button:
                             buttonName = resolveButtonIndex(i);
-                            if i == Buttons.A.index:
+                            if i == Buttons.A['index']:
                                 Buttons.A.isPressed = True;
 
                             print(buttonName + ' pressed');
